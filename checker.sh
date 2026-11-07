@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INPUT="${1:-binary.bin}"
+INPUT="${1:-files/binary_object.bin}"
 N="${2:-100}"
 OUT="/dev/null"
 
@@ -23,6 +23,6 @@ bench() {
            "$name" "$total_ms" "$avg_ms" "$N"
 }
 
-bench "YAML (ручной)" python parser_bin_to_yaml.py     "$INPUT" "$OUT"
-bench "YAML (lib yaml)" python super_parser_bin_to_yaml.py "$INPUT" "$OUT"
-bench "XML  (lib ET)"     python super_parser_bin_to_xml.py      "$INPUT" "$OUT"
+bench "YAML (ручной)" python parsers/parser_bin_to_yaml.py     "$INPUT" "$OUT"
+bench "YAML (lib yaml)" python parsers/lib_parser_bin_to_yaml.py "$INPUT" "$OUT"
+bench "XML  (lib ET)"     python parsers/lib_parser_bin_to_xml.py      "$INPUT" "$OUT"
